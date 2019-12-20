@@ -1,10 +1,14 @@
 package ba.unsa.etf.rpr.zadaca2;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class KorisnikController {
     public TextField fldIme;
@@ -13,8 +17,17 @@ public class KorisnikController {
     public TextField fldUsername;
     public ListView<Korisnik> listKorisnici;
     public PasswordField fldPassword;
+    public Button btnObrisi;
+    public Button btnDodaj;
+    public Button btnKraj;
+    private Image ikonaObrisi = new Image(getClass().getResourceAsStream("/images/edit-delete.png"));
+    private Image ikonaDodaj = new Image(getClass().getResourceAsStream("/images/list-add.png"));
+    private Image ikonaKraj = new Image(getClass().getResourceAsStream("/images/application-exit.png"));
+
+
 
     private KorisniciModel model;
+
 
     public KorisnikController(KorisniciModel model) {
         this.model = model;
@@ -27,6 +40,11 @@ public class KorisnikController {
             model.setTrenutniKorisnik(newKorisnik);
             listKorisnici.refresh();
         });
+
+        btnObrisi.setGraphic(new ImageView(ikonaObrisi));
+        btnDodaj.setGraphic(new ImageView(ikonaDodaj));
+        btnKraj.setGraphic(new ImageView(ikonaKraj));
+
 
         model.trenutniKorisnikProperty().addListener((obs, oldKorisnik, newKorisnik) -> {
             if (oldKorisnik != null) {
