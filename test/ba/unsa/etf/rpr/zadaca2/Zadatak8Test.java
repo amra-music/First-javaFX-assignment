@@ -1,5 +1,6 @@
-/*package ba.unsa.etf.rpr.t7;
+/*package ba.unsa.etf.rpr.zadaca2;
 
+import ba.unsa.etf.rpr.zadaca2.KorisniciModel;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;

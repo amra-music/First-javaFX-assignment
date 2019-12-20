@@ -1,4 +1,4 @@
-package ba.unsa.etf.rpr.t7;
+package ba.unsa.etf.rpr.zadaca2;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,15 +26,15 @@ public class KorisnikController {
         listKorisnici.getSelectionModel().selectedItemProperty().addListener((obs, oldKorisnik, newKorisnik) -> {
             model.setTrenutniKorisnik(newKorisnik);
             listKorisnici.refresh();
-         });
+        });
 
         model.trenutniKorisnikProperty().addListener((obs, oldKorisnik, newKorisnik) -> {
             if (oldKorisnik != null) {
-                fldIme.textProperty().unbindBidirectional(oldKorisnik.imeProperty() );
-                fldPrezime.textProperty().unbindBidirectional(oldKorisnik.prezimeProperty() );
-                fldEmail.textProperty().unbindBidirectional(oldKorisnik.emailProperty() );
-                fldUsername.textProperty().unbindBidirectional(oldKorisnik.usernameProperty() );
-                fldPassword.textProperty().unbindBidirectional(oldKorisnik.passwordProperty() );
+                fldIme.textProperty().unbindBidirectional(oldKorisnik.imeProperty());
+                fldPrezime.textProperty().unbindBidirectional(oldKorisnik.prezimeProperty());
+                fldEmail.textProperty().unbindBidirectional(oldKorisnik.emailProperty());
+                fldUsername.textProperty().unbindBidirectional(oldKorisnik.usernameProperty());
+                fldPassword.textProperty().unbindBidirectional(oldKorisnik.passwordProperty());
             }
             if (newKorisnik == null) {
                 fldIme.setText("");
@@ -42,13 +42,12 @@ public class KorisnikController {
                 fldEmail.setText("");
                 fldUsername.setText("");
                 fldPassword.setText("");
-            }
-            else {
-                fldIme.textProperty().bindBidirectional( newKorisnik.imeProperty() );
-                fldPrezime.textProperty().bindBidirectional( newKorisnik.prezimeProperty() );
-                fldEmail.textProperty().bindBidirectional( newKorisnik.emailProperty() );
-                fldUsername.textProperty().bindBidirectional( newKorisnik.usernameProperty() );
-                fldPassword.textProperty().bindBidirectional( newKorisnik.passwordProperty() );
+            } else {
+                fldIme.textProperty().bindBidirectional(newKorisnik.imeProperty());
+                fldPrezime.textProperty().bindBidirectional(newKorisnik.prezimeProperty());
+                fldEmail.textProperty().bindBidirectional(newKorisnik.emailProperty());
+                fldUsername.textProperty().bindBidirectional(newKorisnik.usernameProperty());
+                fldPassword.textProperty().bindBidirectional(newKorisnik.passwordProperty());
             }
         });
 
@@ -104,8 +103,12 @@ public class KorisnikController {
     }
 
     public void dodajAction(ActionEvent actionEvent) {
-        model.getKorisnici().add(new Korisnik("", "", "", "", ""));
+        model.getKorisnici().add(new Korisnik(fldIme.getText(), fldPrezime.getText(), fldEmail.getText(), fldUsername.getText(), fldPassword.getText()));
         listKorisnici.getSelectionModel().selectLast();
+    }
+
+    public void obrisiAction(ActionEvent actionEvent) {
+        model.getKorisnici().remove(listKorisnici.getSelectionModel().getSelectedIndex());
     }
 
     public void krajAction(ActionEvent actionEvent) {
