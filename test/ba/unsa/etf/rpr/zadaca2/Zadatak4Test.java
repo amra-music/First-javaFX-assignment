@@ -1,4 +1,4 @@
-/*package ba.unsa.etf.rpr.zadaca2;
+package ba.unsa.etf.rpr.zadaca2;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -163,4 +163,3 @@ public class Zadatak4Test {
         assertEquals("password", polje.getText());
     }
 }
-*/
