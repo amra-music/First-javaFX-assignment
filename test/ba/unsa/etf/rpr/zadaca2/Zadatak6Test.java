@@ -1,4 +1,4 @@
-/*package ba.unsa.etf.rpr.zadaca2;
+package ba.unsa.etf.rpr.zadaca2;
 
 import ba.unsa.etf.rpr.zadaca2.KorisniciModel;
 import ba.unsa.etf.rpr.zadaca2.KorisnikController;
@@ -199,4 +199,3 @@ public class Zadatak6Test {
         assertTrue(KorisnikControllerTest.sadrziStil(ime, "poljeNijeIspravno"));
     }
 }
-*/

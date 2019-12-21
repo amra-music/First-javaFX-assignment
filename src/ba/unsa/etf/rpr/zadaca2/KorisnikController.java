@@ -52,8 +52,6 @@ public class KorisnikController {
                 fldPassword.textProperty().unbindBidirectional(oldKorisnik.passwordProperty());
                 fldPasswordRepeat.textProperty().unbindBidirectional(oldKorisnik.passwordRepeatProperty());
                 sliderGodinaRodjenja.valueProperty().unbindBidirectional(oldKorisnik.godinaRodjenjaProperty());
-
-
             }
             if (newKorisnik == null) {
                 fldIme.setText("");
@@ -74,7 +72,7 @@ public class KorisnikController {
         });
 
         fldIme.textProperty().addListener((obs, oldIme, newIme) -> {
-            if (!newIme.isEmpty()) {
+            if (newIme.length()>2 && newIme.matches("[a-zA-Z- ]*")) {
                 fldIme.getStyleClass().removeAll("poljeNijeIspravno");
                 fldIme.getStyleClass().add("poljeIspravno");
             } else {
@@ -84,7 +82,7 @@ public class KorisnikController {
         });
 
         fldPrezime.textProperty().addListener((obs, oldPrezime, newPrezime) -> {
-            if (!newPrezime.isEmpty()) {
+            if (newPrezime.length()>2 && newPrezime.matches("[a-zA-Z- ]*")) {
                 fldPrezime.getStyleClass().removeAll("poljeNijeIspravno");
                 fldPrezime.getStyleClass().add("poljeIspravno");
             } else {
@@ -94,7 +92,7 @@ public class KorisnikController {
         });
 
         fldEmail.textProperty().addListener((obs, oldIme, newIme) -> {
-            if (!newIme.isEmpty()) {
+            if (newIme.matches("[a-zA-Z0-9.]*[a-zA-Z]@[a-zA-Z][a-zA-Z0-9.]*")) {
                 fldEmail.getStyleClass().removeAll("poljeNijeIspravno");
                 fldEmail.getStyleClass().add("poljeIspravno");
             } else {
@@ -104,7 +102,7 @@ public class KorisnikController {
         });
 
         fldUsername.textProperty().addListener((obs, oldIme, newIme) -> {
-            if (!newIme.isEmpty()) {
+            if (newIme.length()<17 && newIme.matches("[a-zA-Z_$][a-zA-Z0-9_]*")) {
                 fldUsername.getStyleClass().removeAll("poljeNijeIspravno");
                 fldUsername.getStyleClass().add("poljeIspravno");
             } else {
