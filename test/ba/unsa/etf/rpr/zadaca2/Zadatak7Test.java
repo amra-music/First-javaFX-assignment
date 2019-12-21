@@ -1,4 +1,4 @@
-/*package ba.unsa.etf.rpr.zadaca2;
+package ba.unsa.etf.rpr.zadaca2;
 
 import ba.unsa.etf.rpr.zadaca2.KorisniciModel;
 import ba.unsa.etf.rpr.zadaca2.KorisnikController;
@@ -50,30 +50,30 @@ class Zadatak7Test {
         robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
         robot.write("ab");
 
-        // Ako ste uradili zadatak 4, otkomentarišite kod ispod
-//        robot.clickOn("#fldPasswordRepeat");
-//        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
-//        robot.write("ab");
+      //   Ako ste uradili zadatak 4, otkomentarišite kod ispod
+        robot.clickOn("#fldPasswordRepeat");
+        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        robot.write("ab");
 
         TextField ime = robot.lookup("#fldPassword").queryAs(TextField.class);
         assertTrue(sadrziStil(ime, "poljeNijeIspravno"));
 
         // Zamjenjujem redoslijed kako bih izbjegao da repeat polje forsira password na korisnika
-//        robot.clickOn("#fldPasswordRepeat");
-//        robot.write("C");
+        robot.clickOn("#fldPasswordRepeat");
+        robot.write("C");
         robot.clickOn("#fldPassword");
         robot.write("C");
         assertTrue(sadrziStil(ime, "poljeNijeIspravno"));
 
         // Ako ste uradili zadatak 4, otkomentarišite kod ispod
-//        robot.clickOn("#fldPasswordRepeat");
-//        robot.write("1");
+        robot.clickOn("#fldPasswordRepeat");
+        robot.write("1");
         robot.clickOn("#fldPassword");
         robot.write("1");
         assertTrue(sadrziStil(ime, "poljeIspravno"));
 
-//        robot.clickOn("#fldPasswordRepeat");
-//        robot.press(KeyCode.BACK_SPACE).release(KeyCode.BACK_SPACE);
+        robot.clickOn("#fldPasswordRepeat");
+        robot.press(KeyCode.BACK_SPACE).release(KeyCode.BACK_SPACE);
         // Ako ste uradili zadatak 4, otkomentarišite kod ispod
         robot.clickOn("#fldPassword");
         robot.press(KeyCode.BACK_SPACE).release(KeyCode.BACK_SPACE);
@@ -89,8 +89,8 @@ class Zadatak7Test {
         robot.write("1234");
         // Ako ste uradili zadatak 4, otkomentarišite kod ispod
 //        robot.clickOn("#fldPasswordRepeat");
-//        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
-//        robot.write("1234");
+        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        robot.write("1234");
 
         TextField ime = robot.lookup("#fldPassword").queryAs(TextField.class);
         assertTrue(sadrziStil(ime, "poljeNijeIspravno"));
@@ -98,29 +98,29 @@ class Zadatak7Test {
         robot.clickOn("#fldPassword");
         robot.write("C");
         // Ako ste uradili zadatak 4, otkomentarišite kod ispod
-//        robot.clickOn("#fldPasswordRepeat");
-//        robot.write("C");
+        robot.clickOn("#fldPasswordRepeat");
+        robot.write("C");
         assertTrue(sadrziStil(ime, "poljeNijeIspravno"));
 
         robot.clickOn("#fldPassword");
         robot.write("c");
         // Ako ste uradili zadatak 4, otkomentarišite kod ispod
-//        robot.clickOn("#fldPasswordRepeat");
-//        robot.write("c");
+        robot.clickOn("#fldPasswordRepeat");
+        robot.write("c");
         assertTrue(sadrziStil(ime, "poljeIspravno"));
 
         robot.clickOn("#fldPassword");
         robot.press(KeyCode.BACK_SPACE).release(KeyCode.BACK_SPACE);
         // Ako ste uradili zadatak 4, otkomentarišite kod ispod
-//        robot.clickOn("#fldPasswordRepeat");
-//        robot.press(KeyCode.BACK_SPACE).release(KeyCode.BACK_SPACE);
+        robot.clickOn("#fldPasswordRepeat");
+        robot.press(KeyCode.BACK_SPACE).release(KeyCode.BACK_SPACE);
         assertTrue(sadrziStil(ime, "poljeNijeIspravno"));
 
         robot.clickOn("#fldPassword");
         robot.write("De");
         // Ako ste uradili zadatak 4, otkomentarišite kod ispod
-//        robot.clickOn("#fldPasswordRepeat");
-//        robot.write("De");
+        robot.clickOn("#fldPasswordRepeat");
+        robot.write("De");
         assertTrue(sadrziStil(ime, "poljeIspravno"));
     }
 
@@ -133,8 +133,8 @@ class Zadatak7Test {
         robot.write("Aa1");
         // Ako ste uradili zadatak 4, otkomentarišite kod ispod
 //        robot.clickOn("#fldPasswordRepeat");
-//        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
-//        robot.write("Aa1");
+        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        robot.write("Aa1");
 
         TextField ime = robot.lookup("#fldPassword").queryAs(TextField.class);
         assertTrue(sadrziStil(ime, "poljeIspravno"));
@@ -142,29 +142,29 @@ class Zadatak7Test {
         robot.clickOn("#fldPassword");
         robot.press(KeyCode.BACK_SPACE).release(KeyCode.BACK_SPACE);
         // Ako ste uradili zadatak 4, otkomentarišite kod ispod
-//        robot.clickOn("#fldPasswordRepeat");
-//        robot.press(KeyCode.BACK_SPACE).release(KeyCode.BACK_SPACE);
+        robot.clickOn("#fldPasswordRepeat");
+        robot.press(KeyCode.BACK_SPACE).release(KeyCode.BACK_SPACE);
         assertTrue(sadrziStil(ime, "poljeNijeIspravno"));
 
         robot.clickOn("#fldPassword");
         robot.write("C");
         // Ako ste uradili zadatak 4, otkomentarišite kod ispod
-//        robot.clickOn("#fldPasswordRepeat");
-//        robot.write("C");
+        robot.clickOn("#fldPasswordRepeat");
+        robot.write("C");
         assertTrue(sadrziStil(ime, "poljeNijeIspravno"));
 
         robot.clickOn("#fldPassword");
         robot.write("9");
         // Ako ste uradili zadatak 4, otkomentarišite kod ispod
-//        robot.clickOn("#fldPasswordRepeat");
-//        robot.write("9");
+        robot.clickOn("#fldPasswordRepeat");
+        robot.write("9");
         assertTrue(sadrziStil(ime, "poljeIspravno"));
 
         robot.clickOn("#fldPassword");
         robot.write("De8");
         // Ako ste uradili zadatak 4, otkomentarišite kod ispod
-//        robot.clickOn("#fldPasswordRepeat");
-//        robot.write("De8");
+        robot.clickOn("#fldPasswordRepeat");
+        robot.write("De8");
         assertTrue(sadrziStil(ime, "poljeIspravno"));
     }
 
@@ -232,4 +232,4 @@ class Zadatak7Test {
         robot.write("Aa1");
         assertNull(model.getTrenutniKorisnik());
     }
-}*/
+}

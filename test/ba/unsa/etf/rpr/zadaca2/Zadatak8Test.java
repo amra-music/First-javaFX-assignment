@@ -1,4 +1,4 @@
-/*package ba.unsa.etf.rpr.zadaca2;
+package ba.unsa.etf.rpr.zadaca2;
 
 import ba.unsa.etf.rpr.zadaca2.KorisniciModel;
 import javafx.application.Platform;
@@ -177,4 +177,3 @@ public class Zadatak8Test {
         assertEquals("", korisniks.get(4).getUsername());
     }
 }
-*/

@@ -91,12 +91,25 @@ public class Korisnik {
         return password;
     }
 
-    public void setPassword(String password) { this.password.set(password); setPasswordRepeat(password); }
+    public void setPassword(String password) {
+        this.password.set(password);
+        setPasswordRepeat(password);
+    }
 
-    public int getGodinaRodjenja() { return godinaRodjenja.get(); }
+    public int getGodinaRodjenja() {
+        return godinaRodjenja.get();
+    }
 
-    public SimpleIntegerProperty godinaRodjenjaProperty() { return godinaRodjenja; }
+    public SimpleIntegerProperty godinaRodjenjaProperty() {
+        return godinaRodjenja;
+    }
 
-    public void setGodinaRodjenja(int godinaRodjenja) { this.godinaRodjenja.set(godinaRodjenja); }
+    public void setGodinaRodjenja(int godinaRodjenja) {
+        this.godinaRodjenja.set(godinaRodjenja);
+    }
+
+    public boolean checkPassword() {
+        return getPassword().matches("^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$");
+    }
 
 }

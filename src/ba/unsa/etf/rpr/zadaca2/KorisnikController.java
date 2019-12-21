@@ -72,7 +72,7 @@ public class KorisnikController {
         });
 
         fldIme.textProperty().addListener((obs, oldIme, newIme) -> {
-            if (newIme.length()>2 && newIme.matches("[a-zA-Z- ]*")) {
+            if (newIme.length() > 2 && newIme.matches("[a-zA-Z- ]*")) {
                 fldIme.getStyleClass().removeAll("poljeNijeIspravno");
                 fldIme.getStyleClass().add("poljeIspravno");
             } else {
@@ -82,7 +82,7 @@ public class KorisnikController {
         });
 
         fldPrezime.textProperty().addListener((obs, oldPrezime, newPrezime) -> {
-            if (newPrezime.length()>2 && newPrezime.matches("[a-zA-Z- ]*")) {
+            if (newPrezime.length() > 2 && newPrezime.matches("[a-zA-Z- ]*")) {
                 fldPrezime.getStyleClass().removeAll("poljeNijeIspravno");
                 fldPrezime.getStyleClass().add("poljeIspravno");
             } else {
@@ -102,7 +102,7 @@ public class KorisnikController {
         });
 
         fldUsername.textProperty().addListener((obs, oldIme, newIme) -> {
-            if (newIme.length()<17 && newIme.matches("[a-zA-Z_$][a-zA-Z0-9_]*")) {
+            if (newIme.length() < 17 && newIme.matches("[a-zA-Z_$][a-zA-Z0-9_]*")) {
                 fldUsername.getStyleClass().removeAll("poljeNijeIspravno");
                 fldUsername.getStyleClass().add("poljeIspravno");
             } else {
@@ -126,7 +126,8 @@ public class KorisnikController {
         });
 
         fldPasswordRepeat.textProperty().addListener((obs, oldIme, newIme) -> {
-            if (!newIme.isEmpty() && newIme.equals(fldPassword.getText())) {
+            if(model.getTrenutniKorisnik()==null)return;
+            if (!newIme.isEmpty() && newIme.equals(fldPassword.getText()) && model.getTrenutniKorisnik().checkPassword()) {
                 fldPasswordRepeat.getStyleClass().removeAll("poljeNijeIspravno");
                 fldPasswordRepeat.getStyleClass().add("poljeIspravno");
                 fldPassword.getStyleClass().removeAll("poljeNijeIspravno");
@@ -148,6 +149,23 @@ public class KorisnikController {
 
     public void obrisiAction(ActionEvent actionEvent) {
         model.getKorisnici().remove(listKorisnici.getSelectionModel().getSelectedIndex());
+    }
+
+    public void generisiAction(ActionEvent actionEvent) {
+        if (model.getTrenutniKorisnik() == null || fldIme.getText().equals("") || fldPrezime.getText().equals("")) return;
+        String prvoSlovo = String.valueOf(fldIme.getText().charAt(0)).toLowerCase();
+        String prezime = fldPrezime.getText().toLowerCase();
+        prvoSlovo = prvoSlovo.replace('č', 'c');
+        prvoSlovo = prvoSlovo.replace('ć', 'c');
+        prvoSlovo = prvoSlovo.replace('š', 's');
+        prvoSlovo = prvoSlovo.replace('ž', 'z');
+        prvoSlovo = prvoSlovo.replace('đ', 'd');
+        prezime = prezime.replace('č', 'c');
+        prezime = prezime.replace('ć', 'c');
+        prezime = prezime.replace('š', 's');
+        prezime = prezime.replace('ž', 'z');
+        prezime = prezime.replace('đ', 'd');
+        fldUsername.setText(prvoSlovo + prezime);
     }
 
     public void krajAction(ActionEvent actionEvent) {
