@@ -128,5 +128,4 @@ public class Korisnik {
     public boolean checkPassword() {
         return getPassword().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*");
     }
-
 }

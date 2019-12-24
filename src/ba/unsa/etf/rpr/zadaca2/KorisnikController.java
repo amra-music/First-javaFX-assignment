@@ -1,7 +1,5 @@
 package ba.unsa.etf.rpr.zadaca2;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -117,7 +115,7 @@ public class KorisnikController {
         });
 
         fldPassword.textProperty().addListener((obs, oldIme, newIme) -> {
-            if(model.getTrenutniKorisnik()==null)return;
+            if (model.getTrenutniKorisnik() == null) return;
             model.getTrenutniKorisnik().setPassword(newIme);
             if (!newIme.isEmpty() && newIme.equals(fldPasswordRepeat.getText()) && model.getTrenutniKorisnik().checkPassword()) {
                 fldPassword.getStyleClass().removeAll("poljeNijeIspravno");
@@ -133,7 +131,7 @@ public class KorisnikController {
         });
 
         fldPasswordRepeat.textProperty().addListener((obs, oldIme, newIme) -> {
-            if(model.getTrenutniKorisnik()==null)return;
+            if (model.getTrenutniKorisnik() == null) return;
             if (!newIme.isEmpty() && newIme.equals(fldPassword.getText()) && model.getTrenutniKorisnik().checkPassword()) {
                 fldPasswordRepeat.getStyleClass().removeAll("poljeNijeIspravno");
                 fldPasswordRepeat.getStyleClass().add("poljeIspravno");
@@ -149,30 +147,30 @@ public class KorisnikController {
         });
 
         cbAdmin.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if(model.getTrenutniKorisnik()==null)return;
-           if(newValue){
-               String ime = model.getTrenutniKorisnik().getIme();
-               String prezime = model.getTrenutniKorisnik().getPrezime();
-               String email = model.getTrenutniKorisnik().getEmail();
-               String username =  model.getTrenutniKorisnik().getUsername();
-               String lozinka = model.getTrenutniKorisnik().getPassword();
-               Administrator admin = new Administrator(ime,prezime,email,username,lozinka);
-               int index = model.getKorisnici().indexOf(model.getTrenutniKorisnik());
-               model.getKorisnici().add(index,admin);
-               model.getKorisnici().remove(index + 1);
-               model.setTrenutniKorisnik(admin);
-           } else {
-               String ime = model.getTrenutniKorisnik().getIme();
-               String prezime = model.getTrenutniKorisnik().getPrezime();
-               String email = model.getTrenutniKorisnik().getEmail();
-               String username =  model.getTrenutniKorisnik().getUsername();
-               String lozinka = model.getTrenutniKorisnik().getPassword();
-               Korisnik korisnik = new Korisnik(ime,prezime,email,username,lozinka);
-               int index = model.getKorisnici().indexOf(model.getTrenutniKorisnik());
-               model.getKorisnici().add(index,korisnik);
-               model.getKorisnici().remove(index + 1);
-               model.setTrenutniKorisnik(korisnik);
-           }
+            if (model.getTrenutniKorisnik() == null) return;
+            if (newValue) {
+                String ime = model.getTrenutniKorisnik().getIme();
+                String prezime = model.getTrenutniKorisnik().getPrezime();
+                String email = model.getTrenutniKorisnik().getEmail();
+                String username = model.getTrenutniKorisnik().getUsername();
+                String lozinka = model.getTrenutniKorisnik().getPassword();
+                Administrator admin = new Administrator(ime, prezime, email, username, lozinka);
+                int index = model.getKorisnici().indexOf(model.getTrenutniKorisnik());
+                model.getKorisnici().add(index, admin);
+                model.getKorisnici().remove(index + 1);
+                model.setTrenutniKorisnik(admin);
+            } else {
+                String ime = model.getTrenutniKorisnik().getIme();
+                String prezime = model.getTrenutniKorisnik().getPrezime();
+                String email = model.getTrenutniKorisnik().getEmail();
+                String username = model.getTrenutniKorisnik().getUsername();
+                String lozinka = model.getTrenutniKorisnik().getPassword();
+                Korisnik korisnik = new Korisnik(ime, prezime, email, username, lozinka);
+                int index = model.getKorisnici().indexOf(model.getTrenutniKorisnik());
+                model.getKorisnici().add(index, korisnik);
+                model.getKorisnici().remove(index + 1);
+                model.setTrenutniKorisnik(korisnik);
+            }
         });
     }
 
@@ -191,7 +189,8 @@ public class KorisnikController {
         fldPasswordRepeat.setText(generisanaLozinka);
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Vaša lozinka glasi " + generisanaLozinka);
         alert.showAndWait();
-        if (model.getTrenutniKorisnik() == null || fldIme.getText().equals("") || fldPrezime.getText().equals("")) return;
+        if (model.getTrenutniKorisnik() == null || fldIme.getText().equals("") || fldPrezime.getText().equals(""))
+            return;
         String prvoSlovo = String.valueOf(fldIme.getText().charAt(0)).toLowerCase();
         String prezime = fldPrezime.getText().toLowerCase();
         prvoSlovo = prvoSlovo.replace('č', 'c');

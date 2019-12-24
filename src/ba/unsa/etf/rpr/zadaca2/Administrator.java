@@ -6,10 +6,10 @@ public class Administrator extends Korisnik {
         setDaLiJeAdmin(true);
     }
 
-    public Administrator (){
+    public Administrator() {
         super();
         setDaLiJeAdmin(true);
-    };
+    }
 
     @Override
     public boolean checkPassword() {
