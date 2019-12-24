@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr.zadaca2;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -18,12 +20,12 @@ public class KorisnikController {
     public Button btnDodaj;
     public Button btnKraj;
     public Slider sliderGodinaRodjenja;
+    public CheckBox cbAdmin;
     private Image ikonaObrisi = new Image(getClass().getResourceAsStream("/images/edit-delete.png"));
     private Image ikonaDodaj = new Image(getClass().getResourceAsStream("/images/list-add.png"));
     private Image ikonaKraj = new Image(getClass().getResourceAsStream("/images/application-exit.png"));
 
     private KorisniciModel model;
-
 
     public KorisnikController(KorisniciModel model) {
         this.model = model;
@@ -51,6 +53,7 @@ public class KorisnikController {
                 fldPassword.textProperty().unbindBidirectional(oldKorisnik.passwordProperty());
                 fldPasswordRepeat.textProperty().unbindBidirectional(oldKorisnik.passwordRepeatProperty());
                 sliderGodinaRodjenja.valueProperty().unbindBidirectional(oldKorisnik.godinaRodjenjaProperty());
+                cbAdmin.selectedProperty().unbindBidirectional(oldKorisnik.daLiJeAdminProperty());
             }
             if (newKorisnik == null) {
                 fldIme.setText("");
@@ -60,6 +63,7 @@ public class KorisnikController {
                 fldPassword.setText("");
                 fldPasswordRepeat.setText("");
                 sliderGodinaRodjenja.setValue(2000);
+                cbAdmin.selectedProperty().setValue(false);
             } else {
                 fldIme.textProperty().bindBidirectional(newKorisnik.imeProperty());
                 fldPrezime.textProperty().bindBidirectional(newKorisnik.prezimeProperty());
@@ -68,6 +72,7 @@ public class KorisnikController {
                 fldPassword.textProperty().bindBidirectional(newKorisnik.passwordProperty());
                 sliderGodinaRodjenja.valueProperty().bindBidirectional(newKorisnik.godinaRodjenjaProperty());
                 fldPasswordRepeat.setText(fldPassword.getText());
+                cbAdmin.selectedProperty().bindBidirectional(newKorisnik.daLiJeAdminProperty());
             }
         });
 
@@ -142,6 +147,33 @@ public class KorisnikController {
             }
 
         });
+
+        cbAdmin.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if(model.getTrenutniKorisnik()==null)return;
+           if(newValue){
+               String ime = model.getTrenutniKorisnik().getIme();
+               String prezime = model.getTrenutniKorisnik().getPrezime();
+               String email = model.getTrenutniKorisnik().getEmail();
+               String username =  model.getTrenutniKorisnik().getUsername();
+               String lozinka = model.getTrenutniKorisnik().getPassword();
+               Administrator admin = new Administrator(ime,prezime,email,username,lozinka);
+               int index = model.getKorisnici().indexOf(model.getTrenutniKorisnik());
+               model.getKorisnici().add(index,admin);
+               model.getKorisnici().remove(index + 1);
+               model.setTrenutniKorisnik(admin);
+           } else {
+               String ime = model.getTrenutniKorisnik().getIme();
+               String prezime = model.getTrenutniKorisnik().getPrezime();
+               String email = model.getTrenutniKorisnik().getEmail();
+               String username =  model.getTrenutniKorisnik().getUsername();
+               String lozinka = model.getTrenutniKorisnik().getPassword();
+               Korisnik korisnik = new Korisnik(ime,prezime,email,username,lozinka);
+               int index = model.getKorisnici().indexOf(model.getTrenutniKorisnik());
+               model.getKorisnici().add(index,korisnik);
+               model.getKorisnici().remove(index + 1);
+               model.setTrenutniKorisnik(korisnik);
+           }
+        });
     }
 
     public void dodajAction(ActionEvent actionEvent) {
@@ -154,7 +186,7 @@ public class KorisnikController {
     }
 
     public void generisiAction(ActionEvent actionEvent) {
-        String generisanaLozinka = PasswordGenerator.generisi();
+        String generisanaLozinka = PasswordGenerator.generisi(model.getTrenutniKorisnik().isDaLiJeAdmin());
         fldPassword.setText(generisanaLozinka);
         fldPasswordRepeat.setText(generisanaLozinka);
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Vaša lozinka glasi " + generisanaLozinka);
@@ -178,4 +210,5 @@ public class KorisnikController {
     public void krajAction(ActionEvent actionEvent) {
         System.exit(0);
     }
+
 }

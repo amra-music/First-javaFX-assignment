@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.zadaca2;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -7,6 +8,19 @@ public class Korisnik {
     private SimpleStringProperty ime, prezime, email, username, password;
     private SimpleStringProperty passwordRepeat = new SimpleStringProperty();
     private SimpleIntegerProperty godinaRodjenja;
+    private SimpleBooleanProperty daLiJeAdmin = new SimpleBooleanProperty(false);
+
+    public boolean isDaLiJeAdmin() {
+        return daLiJeAdmin.get();
+    }
+
+    public SimpleBooleanProperty daLiJeAdminProperty() {
+        return daLiJeAdmin;
+    }
+
+    public void setDaLiJeAdmin(boolean daLiJeAdmin) {
+        this.daLiJeAdmin.set(daLiJeAdmin);
+    }
 
     public Korisnik(String ime, String prezime, String email, String username, String password) {
         this.ime = new SimpleStringProperty(ime);
@@ -16,6 +30,9 @@ public class Korisnik {
         this.password = new SimpleStringProperty(password);
         setPasswordRepeat(password);
         godinaRodjenja = new SimpleIntegerProperty(2000);
+    }
+
+    public Korisnik() {
     }
 
     public String getPasswordRepeat() {

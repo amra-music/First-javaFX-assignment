@@ -12,13 +12,8 @@ public class PasswordGenerator {
     private static final String VELIKA_SLOVA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final String BROJEVI = "0123456789";
     private static final String SPEC_ZNAK = "!@#$%&*()_+-=[]|,./?><";
-    private static boolean sadrziSpecZnak;
 
-    public static void setSadrziSpecZnak(boolean sadrziSpecZnak) {
-        PasswordGenerator.sadrziSpecZnak = sadrziSpecZnak;
-    }
-
-    public static String generisi() {
+    public static String generisi(boolean sadrziSpecZnak) {
         String upperCaseLetters = RandomStringUtils.random(2, 65, 90, true, true);
         String lowerCaseLetters = RandomStringUtils.random(2, 97, 122, true, true);
         String numbers = RandomStringUtils.randomNumeric(2);
