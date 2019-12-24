@@ -68,6 +68,7 @@ public class KorisnikController {
                 fldUsername.textProperty().bindBidirectional(newKorisnik.usernameProperty());
                 fldPassword.textProperty().bindBidirectional(newKorisnik.passwordProperty());
                 sliderGodinaRodjenja.valueProperty().bindBidirectional(newKorisnik.godinaRodjenjaProperty());
+                fldPasswordRepeat.setText(fldPassword.getText());
             }
         });
 
@@ -112,7 +113,9 @@ public class KorisnikController {
         });
 
         fldPassword.textProperty().addListener((obs, oldIme, newIme) -> {
-            if (!newIme.isEmpty() && newIme.equals(fldPasswordRepeat.getText())) {
+            if(model.getTrenutniKorisnik()==null)return;
+            model.getTrenutniKorisnik().setPassword(newIme);
+            if (!newIme.isEmpty() && newIme.equals(fldPasswordRepeat.getText()) && model.getTrenutniKorisnik().checkPassword()) {
                 fldPassword.getStyleClass().removeAll("poljeNijeIspravno");
                 fldPassword.getStyleClass().add("poljeIspravno");
                 fldPasswordRepeat.getStyleClass().removeAll("poljeNijeIspravno");

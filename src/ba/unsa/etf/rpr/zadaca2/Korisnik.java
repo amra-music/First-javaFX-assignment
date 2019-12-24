@@ -109,7 +109,7 @@ public class Korisnik {
     }
 
     public boolean checkPassword() {
-        return getPassword().matches("^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$");
+        return getPassword().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*");
     }
 
 }

@@ -88,7 +88,7 @@ class Zadatak7Test {
         robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
         robot.write("1234");
         // Ako ste uradili zadatak 4, otkomentarišite kod ispod
-//        robot.clickOn("#fldPasswordRepeat");
+        robot.clickOn("#fldPasswordRepeat");
         robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
         robot.write("1234");
 
@@ -132,7 +132,7 @@ class Zadatak7Test {
         robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
         robot.write("Aa1");
         // Ako ste uradili zadatak 4, otkomentarišite kod ispod
-//        robot.clickOn("#fldPasswordRepeat");
+        robot.clickOn("#fldPasswordRepeat");
         robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
         robot.write("Aa1");
 
