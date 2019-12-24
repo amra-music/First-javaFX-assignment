@@ -1,7 +1,6 @@
 package ba.unsa.etf.rpr.zadaca2;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -155,6 +154,11 @@ public class KorisnikController {
     }
 
     public void generisiAction(ActionEvent actionEvent) {
+        String generisanaLozinka = PasswordGenerator.generisi();
+        fldPassword.setText(generisanaLozinka);
+        fldPasswordRepeat.setText(generisanaLozinka);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Vaša lozinka glasi " + generisanaLozinka);
+        alert.showAndWait();
         if (model.getTrenutniKorisnik() == null || fldIme.getText().equals("") || fldPrezime.getText().equals("")) return;
         String prvoSlovo = String.valueOf(fldIme.getText().charAt(0)).toLowerCase();
         String prezime = fldPrezime.getText().toLowerCase();
